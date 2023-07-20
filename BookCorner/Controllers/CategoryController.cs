@@ -27,9 +27,19 @@ namespace BookCorner.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            _db.Categories.Add(obj);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            String entry = obj.Name;
+            if (!string.IsNullOrEmpty(entry) && (entry.Any(c => char.IsDigit(c))))
+            {
+                ModelState.AddModelError("name", "The name can not have digits.");
+            }
+
+            if (ModelState.IsValid)
+            {
+                _db.Categories.Add(obj);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }
