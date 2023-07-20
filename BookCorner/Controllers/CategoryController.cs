@@ -28,7 +28,7 @@ namespace BookCorner.Controllers
         public IActionResult Create(Category obj)
         {
             String entry = obj.Name;
-            if (!string.IsNullOrEmpty(entry) && (entry.Any(c => char.IsDigit(c))))
+            if (obj.Name != null && (entry.Any(c => char.IsDigit(c))))
             {
                 ModelState.AddModelError("name", "The name can not have digits.");
             }
