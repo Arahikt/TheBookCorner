@@ -1,8 +1,14 @@
+using BookCorner.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 ConfigurationManager configuration = builder.Configuration;
 
 // Add services to the container.
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer
+(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 var app = builder.Build();
 
