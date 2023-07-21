@@ -1,4 +1,4 @@
-﻿using BookCorner.Data;
+﻿using BookCorner.DataAccess.Data;
 using BookCorner.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;

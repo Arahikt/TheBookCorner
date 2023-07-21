@@ -16,4 +16,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BookCorner.DataAccess\BookCorner.DataAccess.csproj" />
+    <ProjectReference Include="..\BookCorner.Models\BookCorner.Models.csproj" />
+  </ItemGroup>
+
 </Project>

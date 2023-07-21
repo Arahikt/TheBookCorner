@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCorner", "BookCorner\BookCorner.csproj", "{FEE7E254-C868-46D8-B68F-F1E6242FD5D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BookCornerWeb", "BookCorner\BookCornerWeb.csproj", "{FEE7E254-C868-46D8-B68F-F1E6242FD5D8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookCorner.DataAccess", "BookCorner.DataAccess\BookCorner.DataAccess.csproj", "{ACBBA467-62AF-4D08-8B76-43256AF4E552}"
 EndProject
