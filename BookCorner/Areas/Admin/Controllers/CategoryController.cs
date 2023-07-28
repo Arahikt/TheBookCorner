@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Identity.Client;
 using Microsoft.IdentityModel.Tokens;
 
-namespace BookCorner.Controllers
+namespace BookCornerWeb.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -28,8 +29,8 @@ namespace BookCorner.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            String entry = obj.Name;
-            if (obj.Name != null && (entry.Any(c => char.IsDigit(c))))
+            string entry = obj.Name;
+            if (obj.Name != null && entry.Any(c => char.IsDigit(c)))
             {
                 ModelState.AddModelError("name", "The name can not have digits.");
             }
@@ -46,12 +47,12 @@ namespace BookCorner.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id == null || id ==0)
+            if (id == null || id == 0)
             {
                 return NotFound();
             }
-            Category? categoryFromDb = _unitOfWork.Category.Get(u=> u.Id==id);
-            if(categoryFromDb == null)
+            Category? categoryFromDb = _unitOfWork.Category.Get(u => u.Id == id);
+            if (categoryFromDb == null)
             {
                 return NotFound();
             }
@@ -61,14 +62,14 @@ namespace BookCorner.Controllers
         [HttpPost]
         public IActionResult Edit(Category obj)
         {
-        
+
             if (ModelState.IsValid)
             {
                 _unitOfWork.Category.Update(obj);
                 _unitOfWork.Save();
                 TempData["success"] = "Category updated successfully";
                 return RedirectToAction("Index");
-            } 
+            }
             return View();
         }
 
@@ -86,7 +87,7 @@ namespace BookCorner.Controllers
             return View(categoryFromDb);
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePOST(int? id) 
+        public IActionResult DeletePOST(int? id)
         {
             Category? obj = _unitOfWork.Category.Get(u => u.Id == id);
             if (obj == null)
@@ -99,7 +100,7 @@ namespace BookCorner.Controllers
             return RedirectToAction("Index");
         }
 
-    
+
     }
 }
 
